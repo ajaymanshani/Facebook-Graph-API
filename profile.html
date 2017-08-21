@@ -1,0 +1,269 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FACEBOOK GRAPH API</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<style>
+
+h2{
+	color:white;
+	text-align: center;
+	text-decoration: underline;
+}
+
+p{
+	color:white;
+	font-size: 20px;
+	text-align: left;
+}
+</style>
+
+<style>
+.button {
+    background-color: #3b5998; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+</style>
+
+<style>
+.overlay-loader {
+  display: block;
+  margin: auto;
+  width: 97px;
+  height: 97px;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 97px;
+  height: 97px;
+  animation-name: rotateAnim;
+    -o-animation-name: rotateAnim;
+    -ms-animation-name: rotateAnim;
+    -webkit-animation-name: rotateAnim;
+    -moz-animation-name: rotateAnim;
+  animation-duration: 0.3175s;
+    -o-animation-duration: 0.3175s;
+    -ms-animation-duration: 0.3175s;
+    -webkit-animation-duration: 0.3175s;
+    -moz-animation-duration: 0.3175s;
+  animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    -ms-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+  animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    -ms-animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+}
+.loader div {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid rgb(0,0,0);
+  position: absolute;
+  top: 2px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.loader div:nth-child(odd) {
+  border-top: none;
+  border-left: none;
+}
+.loader div:nth-child(even) {
+  border-bottom: none;
+  border-right: none;
+}
+.loader div:nth-child(2) {
+  border-width: 2px;
+  left: 0px;
+  top: -4px;
+  width: 12px;
+  height: 12px;
+}
+.loader div:nth-child(3) {
+  border-width: 2px;
+  left: -1px;
+  top: 3px;
+  width: 18px;
+  height: 18px;
+}
+.loader div:nth-child(4) {
+  border-width: 3px;
+  left: -1px;
+  top: -4px;
+  width: 23px;
+  height: 23px;
+}
+.loader div:nth-child(5) {
+  border-width: 3px;
+  left: -1px;
+  top: 4px;
+  width: 31px;
+  height: 31px;
+}
+.loader div:nth-child(6) {
+  border-width: 4px;
+  left: 0px;
+  top: -4px;
+  width: 39px;
+  height: 39px;
+}
+.loader div:nth-child(7) {
+  border-width: 4px;
+  left: 0px;
+  top: 6px;
+  width: 49px;
+  height: 49px;
+}
+
+
+@keyframes rotateAnim {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@-o-keyframes rotateAnim {
+  from {
+    -o-transform: rotate(360deg);
+  }
+  to {
+    -o-transform: rotate(0deg);
+  }
+}
+
+@-ms-keyframes rotateAnim {
+  from {
+    -ms-transform: rotate(360deg);
+  }
+  to {
+    -ms-transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes rotateAnim {
+  from {
+    -webkit-transform: rotate(360deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+@-moz-keyframes rotateAnim {
+  from {
+    -moz-transform: rotate(360deg);
+  }
+  to {
+    -moz-transform: rotate(0deg);
+  }
+}
+</style>
+
+<body background="bg.jpg">
+
+<div class="w3-bar w3-white w3-card-2">
+  <a href="home.html" class="w3-bar-item w3-button w3-mobile"><span class="glyphicon glyphicon-home"></span> HOME</a>
+  <a href="profile.html" class="w3-bar-item w3-button w3-mobile"><span class="glyphicon glyphicon-user"></span> PROFILE</a>
+  <a href="feed.html" class="w3-bar-item w3-button w3-mobile"><span class="glyphicon glyphicon-list"></span> NEWS FEED</a>
+</div>
+
+<h2> WELCOME TO YOUR PROFILE PAGE <h2>
+<div class="container">
+<div class="row">
+<button id="facebookBtn" href="#" class="button button2">CLICK HERE TO GET YOUR DETAILS</button>
+</div>
+
+<div class="overlay-loader">
+  <div class="loader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<div id ="result"></div>
+
+<div class="container">
+  
+        <div class="col-md-12">
+          <p>Name - <span id="myName"></span></p>
+        </div>
+
+        <div class="col-md-12">
+          <p>Profile Url - <span id="myProfileId"></span></p>
+        </div>
+
+        <div class="col-md-12">
+          <p>Gender -  <span id="gender"></span></p> 
+        </div>
+
+        <div class="col-md-12">
+          <p>Birthday -<span id="myBirthday"></span></p> 
+        </div>
+
+        <div class="col-md-12">
+         <p>Email - <span id="myEmail"></span></p>
+        </div>
+
+        <div class="col-md-12">
+          <p>Hometown - <span id="myHometown"></span> 
+        </div>
+
+      </div>
+    </div>
+   
+
+</div>
+
+<!-- Latest compiled and minified JavaScript -->
+
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+
+
+</body>
+
+
+</html>
